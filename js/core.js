@@ -69,7 +69,7 @@
   var M = LSB.META = {};
 
   M.TARGET_TYPES = [
-    { k: 'auto', label: 'Otomatis (deteksi saat jalan)' },
+    { k: 'auto', label: 'Otomatis' },
     { k: 'remote', label: 'RemoteEvent' },
     { k: 'function', label: 'RemoteFunction' },
     { k: 'bindable', label: 'BindableEvent / Function' },
@@ -90,18 +90,18 @@
     { k: 'widget', label: 'Nilai widget UI' },
     { k: 'action', label: 'Hasil aksi lain' },
     { k: 'watcher', label: 'Output watcher terakhir' },
-    { k: 'event', label: 'Payload event (rule ini)' },
-    { k: 'random', label: 'Angka acak (min-maks)' },
+    { k: 'event', label: 'Payload event' },
+    { k: 'random', label: 'Angka acak' },
     { k: 'pick', label: 'Pilih acak dari daftar' },
-    { k: 'rr', label: 'Berputar (round robin)' },
+    { k: 'rr', label: 'Berputar' },
     { k: 'player', label: 'LocalPlayer' },
     { k: 'character', label: 'Karakter' },
     { k: 'hrp', label: 'HumanoidRootPart' },
     { k: 'humanoid', label: 'Humanoid' },
     { k: 'target', label: 'Instance dari Target' },
-    { k: 'var', label: 'Variabel (setvar)' },
+    { k: 'var', label: 'Variabel' },
     { k: 'template', label: 'Teks template {w:id} {a:id}' },
-    { k: 'expr', label: 'Ekspresi Lua (lanjut)' }
+    { k: 'expr', label: 'Ekspresi Lua' }
   ];
 
   M.CMP_OPS = [
@@ -206,7 +206,7 @@
   F.project = function () {
     return {
       name: 'MyScript', title: 'My Script', subtitle: '', theme: 'Dark', width: 330, height: 300,
-      icon: '', luluUrl: 'https://raw.githubusercontent.com/USERNAME/REPO/main/LuluUI.lua',
+      icon: '', luluUrl: 'https://raw.githubusercontent.com/stardev-community/XROBLOX/refs/heads/main/LuluUI.lua',
       resolveTimeout: 10, placeIds: [], placeGuard: 'warn', autosave: true, infoTab: true, debug: false,
       skipLoading: false, loadingTitle: '', loadingDesc: '', loadingCreator: '', maxActionsPerSecond: 30,
       ruleBurst: 25, minify: false, comments: true
