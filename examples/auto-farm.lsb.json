@@ -1,0 +1,229 @@
+{
+  "v": 1,
+  "project": {
+    "name": "AutoFarmContoh",
+    "title": "Auto Farm",
+    "subtitle": "",
+    "theme": "Dark",
+    "width": 330,
+    "height": 300,
+    "icon": "",
+    "luluUrl": "https://raw.githubusercontent.com/USERNAME/REPO/main/LuluUI.lua",
+    "resolveTimeout": 10,
+    "placeIds": [],
+    "placeGuard": "warn",
+    "autosave": true,
+    "infoTab": true,
+    "debug": false,
+    "skipLoading": false,
+    "loadingTitle": "",
+    "loadingDesc": "",
+    "loadingCreator": "",
+    "maxActionsPerSecond": 30,
+    "ruleBurst": 25,
+    "minify": false,
+    "comments": true
+  },
+  "targets": [
+    {
+      "id": "t1",
+      "alias": "Spot",
+      "path": "Workspace.Farm.Spot",
+      "type": "instance",
+      "note": ""
+    },
+    {
+      "id": "t2",
+      "alias": "Prompt",
+      "path": "Workspace.Farm.Spot.ProximityPrompt",
+      "type": "prompt",
+      "note": ""
+    }
+  ],
+  "actions": [
+    {
+      "id": "a1",
+      "name": "Ke spot",
+      "kind": "teleport",
+      "targetId": "t1",
+      "args": [
+        {
+          "src": "target",
+          "type": "auto",
+          "value": "",
+          "ref": "t1",
+          "field": "",
+          "min": "1",
+          "max": "10",
+          "list": [],
+          "expr": "",
+          "tpl": ""
+        },
+        {
+          "src": "fixed",
+          "type": "number",
+          "value": "3",
+          "ref": "",
+          "field": "",
+          "min": "1",
+          "max": "10",
+          "list": [],
+          "expr": "",
+          "tpl": ""
+        }
+      ],
+      "retry": 0,
+      "delay": 0,
+      "after": 0,
+      "cooldown": 0,
+      "ignoreError": false,
+      "note": "",
+      "mode": "property",
+      "prop": "Value",
+      "widgetId": "",
+      "varName": "",
+      "ref": "",
+      "steps": [],
+      "until": null,
+      "level": "info",
+      "toNotify": false,
+      "code": ""
+    },
+    {
+      "id": "a2",
+      "name": "Ambil",
+      "kind": "prompt",
+      "targetId": "t2",
+      "args": [],
+      "retry": 0,
+      "delay": 0,
+      "after": 0,
+      "cooldown": 0,
+      "ignoreError": false,
+      "note": "",
+      "mode": "property",
+      "prop": "Value",
+      "widgetId": "",
+      "varName": "",
+      "ref": "",
+      "steps": [],
+      "until": null,
+      "level": "info",
+      "toNotify": false,
+      "code": ""
+    },
+    {
+      "id": "a3",
+      "name": "Info",
+      "kind": "notify",
+      "targetId": "",
+      "args": [
+        {
+          "src": "fixed",
+          "type": "string",
+          "value": "Farm berjalan",
+          "ref": "",
+          "field": "",
+          "min": "1",
+          "max": "10",
+          "list": [],
+          "expr": "",
+          "tpl": ""
+        }
+      ],
+      "retry": 0,
+      "delay": 0,
+      "after": 0,
+      "cooldown": 0,
+      "ignoreError": false,
+      "note": "",
+      "mode": "property",
+      "prop": "Value",
+      "widgetId": "",
+      "varName": "",
+      "ref": "",
+      "steps": [],
+      "until": null,
+      "level": "info",
+      "toNotify": false,
+      "code": ""
+    }
+  ],
+  "watchers": [],
+  "rules": [],
+  "macros": [
+    {
+      "id": "m1",
+      "name": "Farm",
+      "steps": [
+        {
+          "action": "a1"
+        },
+        {
+          "wait": 0.4
+        },
+        {
+          "action": "a2"
+        },
+        {
+          "wait": 1.5
+        }
+      ],
+      "loop": true,
+      "count": 1,
+      "interval": 0.5
+    }
+  ],
+  "profiles": [],
+  "ui": {
+    "tabs": [
+      {
+        "id": "tab8m3gc",
+        "name": "Main",
+        "widgets": [
+          {
+            "id": "w1",
+            "type": "Toggle",
+            "label": "Auto Farm",
+            "subtext": "",
+            "default": false,
+            "locked": false,
+            "persist": true,
+            "bind": {
+              "kind": "macro",
+              "ref": "m1"
+            }
+          },
+          {
+            "id": "w2",
+            "type": "Button",
+            "label": "⛔ Berhenti",
+            "subtext": "",
+            "default": null,
+            "locked": false,
+            "persist": true,
+            "bind": {
+              "kind": "stopall",
+              "ref": ""
+            },
+            "color": "",
+            "confirm": {
+              "enabled": false,
+              "title": "Konfirmasi",
+              "message": "Lanjutkan aksi ini?"
+            },
+            "loading": ""
+          }
+        ]
+      }
+    ],
+    "infoPanel": {
+      "enabled": false,
+      "title": "Status",
+      "lines": []
+    },
+    "locationPanel": false,
+    "locationMode": "walk",
+    "locations": []
+  }
+}

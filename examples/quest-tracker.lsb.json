@@ -1,0 +1,286 @@
+{
+  "v": 1,
+  "project": {
+    "name": "QuestTrackerContoh",
+    "title": "Quest Tracker",
+    "subtitle": "",
+    "theme": "Dark",
+    "width": 330,
+    "height": 300,
+    "icon": "",
+    "luluUrl": "https://raw.githubusercontent.com/USERNAME/REPO/main/LuluUI.lua",
+    "resolveTimeout": 10,
+    "placeIds": [],
+    "placeGuard": "warn",
+    "autosave": true,
+    "infoTab": true,
+    "debug": false,
+    "skipLoading": false,
+    "loadingTitle": "",
+    "loadingDesc": "",
+    "loadingCreator": "",
+    "maxActionsPerSecond": 30,
+    "ruleBurst": 25,
+    "minify": false,
+    "comments": true
+  },
+  "targets": [
+    {
+      "id": "t1",
+      "alias": "Quest",
+      "path": "Players.LocalPlayer.leaderstats.Quest",
+      "type": "value",
+      "note": ""
+    },
+    {
+      "id": "t2",
+      "alias": "Claim",
+      "path": "ReplicatedStorage.Remotes.ClaimQuest",
+      "type": "remote",
+      "note": ""
+    }
+  ],
+  "actions": [
+    {
+      "id": "a1",
+      "name": "Claim",
+      "kind": "fire",
+      "targetId": "t2",
+      "args": [
+        {
+          "src": "watcher",
+          "type": "auto",
+          "value": "",
+          "ref": "wt1",
+          "field": "value",
+          "min": "1",
+          "max": "10",
+          "list": [],
+          "expr": "",
+          "tpl": ""
+        }
+      ],
+      "retry": 0,
+      "delay": 0,
+      "after": 0,
+      "cooldown": 0,
+      "ignoreError": false,
+      "note": "",
+      "mode": "property",
+      "prop": "Value",
+      "widgetId": "",
+      "varName": "",
+      "ref": "",
+      "steps": [],
+      "until": null,
+      "level": "info",
+      "toNotify": false,
+      "code": ""
+    },
+    {
+      "id": "a2",
+      "name": "Catat",
+      "kind": "log",
+      "targetId": "",
+      "args": [
+        {
+          "src": "template",
+          "type": "auto",
+          "value": "",
+          "ref": "",
+          "field": "",
+          "min": "1",
+          "max": "10",
+          "list": [],
+          "expr": "",
+          "tpl": "Quest {wt:wt1.value} diclaim"
+        }
+      ],
+      "retry": 0,
+      "delay": 0,
+      "after": 0,
+      "cooldown": 0,
+      "ignoreError": false,
+      "note": "",
+      "mode": "property",
+      "prop": "Value",
+      "widgetId": "",
+      "varName": "",
+      "ref": "",
+      "steps": [],
+      "until": null,
+      "level": "info",
+      "toNotify": false,
+      "code": ""
+    }
+  ],
+  "watchers": [
+    {
+      "id": "wt1",
+      "name": "Quest berubah",
+      "kind": "valueChanged",
+      "targetId": "t1",
+      "enabled": true,
+      "attr": "",
+      "prop": "",
+      "nameFilter": "",
+      "classFilter": "",
+      "fireExisting": false,
+      "intervalOp": {
+        "src": "fixed",
+        "type": "number",
+        "value": "1",
+        "ref": "",
+        "field": "",
+        "min": "1",
+        "max": "10",
+        "list": [],
+        "expr": "",
+        "tpl": ""
+      },
+      "startDelay": 0,
+      "radius": 10,
+      "pollEvery": 0.5,
+      "onlyEnter": true,
+      "key": "F",
+      "existsOn": "appear",
+      "filter": {
+        "enabled": false,
+        "index": 1,
+        "op": "==",
+        "value": ""
+      },
+      "fireOnStart": false
+    }
+  ],
+  "rules": [
+    {
+      "id": "r1",
+      "name": "Auto claim",
+      "when": "wt1",
+      "cond": {
+        "op": "AND",
+        "items": [
+          {
+            "left": {
+              "src": "watcher",
+              "type": "auto",
+              "value": "",
+              "ref": "wt1",
+              "field": "value",
+              "min": "1",
+              "max": "10",
+              "list": [],
+              "expr": "",
+              "tpl": ""
+            },
+            "cmp": ">=",
+            "right": {
+              "src": "fixed",
+              "type": "number",
+              "value": "10",
+              "ref": "",
+              "field": "",
+              "min": "1",
+              "max": "10",
+              "list": [],
+              "expr": "",
+              "tpl": ""
+            }
+          }
+        ]
+      },
+      "mode": "sequence",
+      "steps": [
+        {
+          "id": "a1",
+          "delay": 0
+        },
+        {
+          "id": "a2",
+          "delay": 0
+        }
+      ],
+      "cooldown": 1,
+      "maxRuns": 0,
+      "priority": 0,
+      "onFail": "continue",
+      "fallback": "",
+      "enabled": false,
+      "allowOverlap": false
+    }
+  ],
+  "macros": [],
+  "profiles": [],
+  "ui": {
+    "tabs": [
+      {
+        "id": "tabe4wt2",
+        "name": "Main",
+        "widgets": [
+          {
+            "id": "w1",
+            "type": "Toggle",
+            "label": "Auto claim quest",
+            "subtext": "",
+            "default": false,
+            "locked": false,
+            "persist": true,
+            "bind": {
+              "kind": "rule",
+              "ref": "r1"
+            }
+          },
+          {
+            "id": "w2",
+            "type": "InfoLabel",
+            "label": "Quest sekarang",
+            "subtext": "",
+            "default": "-",
+            "locked": false,
+            "persist": true,
+            "bind": {
+              "kind": "none",
+              "ref": ""
+            },
+            "src": {
+              "src": "watcher",
+              "type": "auto",
+              "value": "",
+              "ref": "wt1",
+              "field": "value",
+              "min": "1",
+              "max": "10",
+              "list": [],
+              "expr": "",
+              "tpl": ""
+            }
+          },
+          {
+            "id": "w3",
+            "type": "List",
+            "label": "Log",
+            "subtext": "",
+            "default": null,
+            "locked": false,
+            "persist": true,
+            "bind": {
+              "kind": "none",
+              "ref": ""
+            },
+            "height": 110,
+            "isLog": true
+          }
+        ]
+      }
+    ],
+    "infoPanel": {
+      "enabled": false,
+      "title": "Status",
+      "lines": []
+    },
+    "locationPanel": false,
+    "locationMode": "walk",
+    "locations": []
+  }
+}
